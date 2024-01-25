@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import model.Resultado;
@@ -28,7 +30,53 @@ public class BuscadorController {
 		
 		//le devolvemos la pagina
 		return "resultados";
-		
 	}
-
+	
+	//este método simplemente nos devuelve a inicio
+	@GetMapping(value={"toMenu","/"})
+	public String toMenu() {
+		return "menu";
+	}
+	
+	
+	
+	@GetMapping(value={"toBuscar","/"})
+	public String toBuscar() {
+		return "buscar";
+	}
+	
+	//este método simplemente nos devuelve a inicio
+	@GetMapping(value="toRegistrar")
+	public String toRegistrar() {
+		return "registro";
+		}
+	
+	/*la direccion raiz nos lleva al home
+	@GetMapping(value="/")
+	public String wellcome() {
+		return "buscar";
+	}
+	*/
+	
+	@PostMapping(value="registrar")
+	public String registrar(@RequestParam("url")String url,
+							@RequestParam("tematica")String tematica,
+							@RequestParam("description")String description,
+							Model model) {
+		//al nuevo objeto que vamos a meter en la arraylist le pasamos los parametros desde arriba
+		Resultado nuevoResultado=new Resultado(url, 
+								tematica,
+								description);
+		buscadorService.agregarPagina(nuevoResultado);
+		
+		
+		return "menu";
+	}
+	//la inyeccion del modelattribute te envia el objeto
+	@PostMapping(value="registrarModel")
+	public String registrar(@ModelAttribute Resultado nuevoResultado) {
+		//al nuevo objeto que vamos a meter en la arraylist le pasamos los parametros desde arriba
+		buscadorService.agregarPagina(nuevoResultado);
+		return "menu";
+	}
 }

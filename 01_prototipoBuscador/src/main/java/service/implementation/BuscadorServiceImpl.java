@@ -10,7 +10,7 @@ import service.interfaces.BuscadorService;
 //hemos añadido la anotacion y la hemos importado
 @Service
 public class BuscadorServiceImpl implements BuscadorService {
-	List<Resultado> resultados=new ArrayList<>(List.of(
+	 static List<Resultado> resultados=new ArrayList<>(List.of(
 			new Resultado("http://www.fnac.es/","libros","Libros y más"),
 			new Resultado("http://www.mybook.com/","libros","librería de temas varios"),			
 			new Resultado("http://www.game.es/","juegos","Juegos variados"),
@@ -33,6 +33,13 @@ public class BuscadorServiceImpl implements BuscadorService {
 				filtrados.add(resultado);				
 			}*/
 		}
+
+
+	@Override
+	public void agregarPagina(Resultado resultado) {
+		resultados.add(resultado);
+		
+	}
 	}
 
 
