@@ -9,7 +9,7 @@
 
 </head>
 <body>
-<div class="container m-5 p-5 w-25 border border-info">
+<div class="container m-5 p-5 w-25 border rounded border-info">
 		<form action="registrarModel" method="POST">
 			<div class="m-5  row justify-content-md-center">
 				<span class="col-5">URL</span> <input  class="col-7" type="text" name="url"><br>

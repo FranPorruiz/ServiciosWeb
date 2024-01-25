@@ -32,31 +32,6 @@ public class BuscadorController {
 		return "resultados";
 	}
 	
-	//este método simplemente nos devuelve a inicio
-	@GetMapping(value={"toMenu","/"})
-	public String toMenu() {
-		return "menu";
-	}
-	
-	
-	
-	@GetMapping(value={"toBuscar","/"})
-	public String toBuscar() {
-		return "buscar";
-	}
-	
-	//este método simplemente nos devuelve a inicio
-	@GetMapping(value="toRegistrar")
-	public String toRegistrar() {
-		return "registro";
-		}
-	
-	/*la direccion raiz nos lleva al home
-	@GetMapping(value="/")
-	public String wellcome() {
-		return "buscar";
-	}
-	*/
 	
 	@PostMapping(value="registrar")
 	public String registrar(@RequestParam("url")String url,

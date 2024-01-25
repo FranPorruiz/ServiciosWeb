@@ -14,7 +14,7 @@
 		que se llama action, señalar que el metodo es GET, asi que coge el 
 		getmappin, si pusieras post, cogeria un  postmapping con el mismo nombre
 	 -->
-	<div class="container m-5 p-5 w-25 border border-info">
+	<div class="container m-5 p-5 w-25 border rounded border-info">
 		<form action="buscar" method="GET">
 			<div class="m-4 row justify-content-md-center">
 				<span>Introduce  la temática</span> 
