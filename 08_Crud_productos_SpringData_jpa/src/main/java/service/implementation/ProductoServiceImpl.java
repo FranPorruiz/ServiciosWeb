@@ -22,7 +22,7 @@ public class ProductoServiceImpl  implements ProductoService{
 	
 	@Override
 	public boolean altaProducto(Producto nuevoProducto) {
-		if(nuevoProducto==null) {
+		if(!(nuevoProducto==null)) {
 			productosDao.save(nuevoProducto);
 			return true;
 		}
@@ -33,22 +33,25 @@ public class ProductoServiceImpl  implements ProductoService{
 	
 	@Override
 	public List<Producto> buscar(String categoria) {
-		List<Producto> busqueda=productosDao.findByCategoria(categoria);
+		List<Producto> busqueda=productosDao.findBycategoriaProducto(categoria);
 		return busqueda;
 	}
 
 	@Override
 	public void modificar(String nombre, double nuevoPrecio) {
-		Producto productoModificado=productosDao.findByNombre(nombre);
-		productoModificado.setPrecioProducto(nuevoPrecio);
-		productosDao.update(productoModificado);
+		Producto productoModificado=productosDao.findBynombreProducto(nombre);
+		if(productoModificado!=null) {
+			productoModificado.setPrecioProducto(nuevoPrecio);
+			productosDao.save(productoModificado);
+		}
 		
 		
 	}
 	
+	
 	@Override
 	public Producto borrar(String nombre) {
-		Producto productoBorrado=productosDao.findByNombre(nombre);
+		Producto productoBorrado=productosDao.findBynombreProducto(nombre);
 		
 		if(productoBorrado!=null) {
 			productosDao.delete(productoBorrado);
@@ -56,6 +59,12 @@ public class ProductoServiceImpl  implements ProductoService{
 		}
 		
 		return null;
+	}
+	
+	//metodo para devolverlos todos
+	@Override
+	public List<Producto> todos() {
+		return productosDao.findAll();
 	}
 	
 

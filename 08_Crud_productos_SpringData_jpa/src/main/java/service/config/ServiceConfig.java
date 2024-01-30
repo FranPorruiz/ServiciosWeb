@@ -1,17 +1,20 @@
 package service.config;
 
 import javax.sql.DataSource;
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+//para activar el JPA, hay que pasarle las interfaces a implementar,el nombre del metodo que crea el factory, 
+//finalement el metodo que se ocupa de la transaccion
+@EnableJpaRepositories(basePackages = "dao.interfaces",entityManagerFactoryRef = "factory",transactionManagerRef = "txManager" ) 
 @EnableTransactionManagement //habilita la transaccionalidad usando anotación @Transactional
-@ComponentScan(basePackages = {"service.implementation", "dao.implementation"})
+@ComponentScan(basePackages = {"service.implementation"})
 @Configuration
 public class ServiceConfig {
 	
