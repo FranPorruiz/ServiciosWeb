@@ -15,7 +15,7 @@ import model.Cliente;
 
 
 public interface ClientesDao extends JpaRepository<Cliente, Integer>  {
-	Cliente findByUsuarioandPassword(String usuario, String password);
+	Cliente findByUsuarioAndPassword(String usuario, String password);
 	Cliente findByUsuario(String usuario);
 	
 	//heredados 

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+<body>
+	<div class="container border rounded border-primary m-5 w-50">
+	
+		<h1>Añadir nuevo cliente</h1>
+		<form action="alta" onsubmit="return validar();" method="post">
+			<div class="row">
+				Usuario:<input type="text" id="usuario" name="usuario" placeholder="Usuario">
+			</div>
+			<div class="row">
+				Password:<input type="password" id="password" name="password" placeholder="Contraseña">
+			</div>
+			<div class="row">
+				Repetir password:<input type="password" id="repetir" name="repetir" placeholder="Repetir contraseña">
+			</div>
+			<div class="row">
+				Email:<input type="text" id="email" name="email" placeholder="Email">
+			</div>
+			<div class="row">
+				Teléfono:<input type="text" id="telefono" name="telefono" placeholder="Teléfono">
+			</div>
+			<input type="submit" value="Registrar">
+		</form>
+		<br>
+		
+	</div>
+	
+	<script type="text/javascript">
+		function validar(){
+			var password=$("#password").val();
+			var repetir=$("#repetir").val();
+			if(password!=repetir){
+				alert("Las contraseñas no coinciden!");
+				return false;
+			}
+			
+			return true;
+		}
+	
+	
+	
+	</script>
+	</div>
+	
+
+</body>
+</html>

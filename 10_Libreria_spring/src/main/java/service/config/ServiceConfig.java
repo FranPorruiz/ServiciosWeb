@@ -47,7 +47,7 @@ public class ServiceConfig {
 		LocalContainerEntityManagerFactoryBean factory=new LocalContainerEntityManagerFactoryBean();
 		factory.setPersistenceUnitName("librosPU");
 		factory.setDataSource(crearDatasource());
-		factory.setPackagesToScan("modelo");
+		factory.setPackagesToScan("model");
 		factory.setJpaVendorAdapter(adapter());
 		return factory;
 	} 

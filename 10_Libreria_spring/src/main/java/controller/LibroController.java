@@ -25,7 +25,7 @@ public class LibroController {
 	@Autowired
 	LibrosService ls;
 	
-	static List<Libro> carrito;
+	static List<Libro> carrito=new ArrayList<>();
 	
 	//filrar por categoria
 	@GetMapping(value="buscarCategoria")
@@ -49,9 +49,12 @@ public class LibroController {
 	//quitar del carrito
 	//podemos usar los HTP Session como parametro para guardar atributos
 	@GetMapping(value="borrarCarrito")
-	public  @ResponseBody List<Libro> quitarCarrito(@RequestParam("pos") int isbn, HttpSession session) {
-		carrito=(List<Libro>) session.getAttribute("carrito");
-		carrito.remove(ls.getLibro(isbn));
+	public  @ResponseBody List<Libro> quitarCarrito(@RequestParam("pos") int pos, HttpSession session) {
+		if(session.getAttribute("carrito")!=null) {
+			carrito=(List<Libro>) session.getAttribute("carrito");
+			carrito.remove(pos);
+		}
+	
 		session.setAttribute("carrito", carrito);
 		return carrito;
 	}	

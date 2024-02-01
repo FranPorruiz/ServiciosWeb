@@ -24,7 +24,7 @@ public class ClienteServiceImp implements ClienteService {
 
 	@Override
 	public Cliente autenticar(String usuario, String password) {
-		return clientesDao.findByUsuarioandPassword(usuario, password);
+		return clientesDao.findByUsuarioAndPassword(usuario, password);
 		
 	}
 

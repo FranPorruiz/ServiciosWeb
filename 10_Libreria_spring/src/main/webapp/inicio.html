@@ -8,7 +8,7 @@
 <body>
 	<div class="container border rounded border-primary m-5 w-50">
 		<div class="row m-5  p-5">
-			<form class="border-primary p-3" action="FrontController?operation=doAutenticar" method="post">
+			<form class="border-primary p-3" action="autenticar" method="get">
 				<div class="form-group">
 					<p>Usuario</p>
 				    	<input type="text" class="form-control" name="usuario" >
@@ -18,14 +18,14 @@
 				    	<input type="text" class="form-control" name="password" >
 				</div> 
 				<div class="form-group">
-  						<input type="submit" class="btn btn-primary" value="autenticar"></input>
+  						<input type="submit" class="btn btn-primary" value="Login"></input>
 				</div>   	   	
 			</form>
 		</div>
 	</div>	
 	<div class="m-5 w-50">	
 		
-		<h3><a href="FrontController?operation=toRegistrarUsuario">Registrarse</a></h3>
+		<h3><a href="toRegistro">Registrarse</a></h3>
 	</div>
 </body>
 </html>
