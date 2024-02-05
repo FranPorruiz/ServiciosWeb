@@ -37,5 +37,8 @@ public interface LibrosService {
 	
 	VentaDto getVentaDto(int idVenta);
 	
+	//esto recibe el usuario que ha comprado y los libros comprados
+	void registrarCompra(String usuario, List<LibroDto>libros);
+	
 
 }

@@ -1,5 +1,7 @@
 package service.implementations;
 
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -123,6 +125,22 @@ public class LibrosServiceImpl implements LibrosService {
 		 List <Venta> resultado=ventasDao.findByClienteUsuario(cltDTo.getUsuario()) ;
 		 return resultado.stream().map(e->mapeador.ventaEntitytoventaDto(e)).toList() ;
 		 
+	}
+
+	@Override
+	public void registrarCompra(String usuario, List<LibroDto> libros) {
+		Date fecha=convertToDateViaSqlTimestamp(LocalDateTime.now());
+		Cliente cli=clientesDao.findByUsuario(usuario);
+		for (LibroDto libroDto : libros) {
+			
+			Venta nuevaVenta=new Venta(0,cli, mapeador.libroDtotoEntity(libroDto), fecha);
+			ventasDao.save(nuevaVenta);
+			
+		}
+	}
+	
+	public Date convertToDateViaSqlTimestamp(LocalDateTime dateToConvert) {
+	    return java.sql.Timestamp.valueOf(dateToConvert);
 	}
 
 

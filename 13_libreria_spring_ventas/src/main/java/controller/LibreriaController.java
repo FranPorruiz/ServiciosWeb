@@ -97,4 +97,16 @@ public class LibreriaController {
 		return carrito;
 	}
 	
+	
+	//controller de compra
+	public String comprar(HttpSession sesion){
+		ClienteDto cliente=(ClienteDto)sesion.getAttribute("usuario");
+		List <LibroDto> libros=(List<LibroDto>) sesion.getAttribute("carrito");
+		librosService.registrarCompra(cliente.getUsuario(), libros);
+		
+		//forzado de fin de sesion
+		sesion.invalidate();
+		return "login";
+		
+	}
 }

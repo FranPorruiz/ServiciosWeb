@@ -37,6 +37,19 @@ public class Mapeador {
 				service.getTemaDto(libro.getTema().getIdTema() ));
 	}
 	
+	public Libro libroDtotoEntity(LibroDto librodto) {
+		
+		return new Libro(librodto.getIsbn(), 
+						librodto.getTitulo(),
+						librodto.getAutor(),
+						librodto.getPrecio(),
+						librodto.getPaginas(),
+						temaDtoAEntity(librodto.getTemaDto())
+						
+						);
+		
+	}
+	
 	public  Cliente clienteDtotoEntity(ClienteDto clientedto) {
 		
 		//return new Cliente (0, clientedto.getUsuario(), clientedto.getEmail(), clientedto.getPassword(), clientedto.getTelefono(), service.getVentas());
@@ -63,5 +76,11 @@ public class Mapeador {
 		return null;
 	}
 	//Date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate(); 
+	
+	public Tema temaDtoAEntity(TemaDto temadto) {
+		
+		return new Tema(temadto.getIdTema(), temadto.getTema(), null);
+		
+	}
 
 }
