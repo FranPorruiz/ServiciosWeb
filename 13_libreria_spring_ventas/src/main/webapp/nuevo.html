@@ -1,8 +1,8 @@
+<!DOCTYPE html>
 
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <meta http-equiv="Expires" content="0">
 <meta http-equiv="Last-Modified" content="0">
 <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
@@ -40,13 +40,13 @@ input {
 </head>
 <body>
 	<div>
-		<h1>Añadir nuevo cliente</h1>
+		<h1>AÃ±adir nuevo cliente</h1>
 		<form action="alta" onsubmit="return validar();" method="post">
 			Usuario:<input type="text" id="usuario" name="usuario" placeholder="Usuario">
-			Password:<input type="password" id="password" name="password" placeholder="Contraseña">
-			Repetir password:<input type="password" id="repetir" name="repetir" placeholder="Repetir contraseña">
+			Password:<input type="password" id="password" name="password" placeholder="ContraseÃ±a">
+			Repetir password:<input type="password" id="repetir" name="repetir" placeholder="Repetir contraseÃ±a">
 			Email:<input type="text" id="email" name="email" placeholder="Email">
-			Teléfono:<input type="text" id="telefono" name="telefono" placeholder="Teléfono">
+			TelÃ©fono:<input type="text" id="telefono" name="telefono" placeholder="TelÃ©fono">
 			<input type="submit" value="Registrar">
 		</form>
 		<br>
@@ -58,7 +58,7 @@ input {
 			var password=$("#password").val();
 			var repetir=$("#repetir").val();
 			if(password!=repetir){
-				alert("Las contraseñas no coinciden!");
+				alert("Las contraseÃ±as no coinciden!");
 				return false;
 			}
 			

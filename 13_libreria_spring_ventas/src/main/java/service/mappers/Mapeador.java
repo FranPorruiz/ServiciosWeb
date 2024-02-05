@@ -7,9 +7,11 @@ import org.springframework.stereotype.Component;
 import dtos.ClienteDto;
 import dtos.LibroDto;
 import dtos.TemaDto;
+import dtos.VentaDto;
 import model.Cliente;
 import model.Libro;
 import model.Tema;
+import model.Venta;
 import service.implementations.LibrosServiceImpl;
 import service.interfaces.LibrosService;
 
@@ -32,13 +34,15 @@ public class Mapeador {
 				libro.getPaginas(),
 				//esto ultimo recoge el id del tema que correspone al libro
 				//llamado por el tema
-				service.getTema(libro.getTema().getIdTema() ));
+				service.getTemaDto(libro.getTema().getIdTema() ));
 	}
 	
 	public  Cliente clienteDtotoEntity(ClienteDto clientedto) {
 		
-		return new Cliente (0, clientedto.getUsuario(), clientedto.getEmail(), clientedto.getPassword(), clientedto.getTelefono());
-		
+		//return new Cliente (0, clientedto.getUsuario(), clientedto.getEmail(), clientedto.getPassword(), clientedto.getTelefono(), service.getVentas());
+		//no necesitamo0s devolver las ventas
+		return new Cliente (0, clientedto.getUsuario(), clientedto.getEmail(), clientedto.getPassword(), clientedto.getTelefono(), null);
+
 	}
 	
 	public  ClienteDto clienteEntitytoDto(Cliente cliente) {
@@ -46,4 +50,18 @@ public class Mapeador {
 		return new ClienteDto(cliente.getUsuario(), cliente.getEmail(), cliente.getPassword(), cliente.getTelefono());
 		
 	}
+	
+	public VentaDto ventaEntitytoventaDto(Venta venta) {
+		
+		return new VentaDto( venta.getCliente().getIdCliente(),venta.getLibro().getIsbn(), venta.getFecha() );
+		
+	}
+	
+	
+	public Venta ventaDtotoEntity(VentaDto ventaDto) {
+		//return new Venta(0, ventaDto.getIdCliente(), ventaDto.getIsbn(),ventaDto.getFecha() );
+		return null;
+	}
+	//Date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate(); 
+
 }

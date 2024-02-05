@@ -9,7 +9,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -24,18 +26,19 @@ public class Venta {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idVenta;
-	//Date java.util
-	private Date fecha;
-	
-	@ManyToMany()
-	@JoinColumn(name="idTema",
-			referencedColumnName="idTema")
+
+	@ManyToOne()
+	@JoinColumn(name="idCliente",
+			referencedColumnName="idCliente")
 	private Cliente cliente;
 	
-	@OneToMany()
-	private List <Libro> libros;
+	@ManyToOne()
+	@JoinColumn(name="idLibro",
+			referencedColumnName="isbn")
+	private Libro libro;
 	
-	
+	//Date java.util
+		private Date fecha;
 	
 	
 	

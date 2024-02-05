@@ -33,4 +33,9 @@ public class ClientesServiceImpl implements ClientesService {
 		return false;
 	}
 
+	@Override
+	public ClienteDto encontrarCliente(String usuario) {
+		 return mapeador.clienteEntitytoDto(clientesDao.findByUsuario(usuario));
+	}
+
 }

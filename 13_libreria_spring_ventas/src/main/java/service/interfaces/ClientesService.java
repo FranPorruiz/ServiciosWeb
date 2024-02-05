@@ -6,4 +6,6 @@ import model.Cliente;
 public interface ClientesService {
 	ClienteDto autenticarCliente(String usuario, String password);
 	boolean altaCliente(ClienteDto cliente);
+	ClienteDto encontrarCliente(String usuario);
+	
 }

@@ -48,6 +48,10 @@ public class MvcConfig implements WebMvcConfigurer{
 	public void addViewControllers(ViewControllerRegistry registry) {
 		registry.addViewController("/").setViewName("login");
 		registry.addViewController("/toNuevo").setViewName("nuevo");
+		registry.addViewController("/toCompras").setViewName("compras");
+		registry.addViewController("/toCarrito").setViewName("visor");
+
+
 		
 	}
 	@Override
