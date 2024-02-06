@@ -54,7 +54,7 @@ public class LibreriaController {
 	
 	@GetMapping(value="compras")
 	public String mostrarCompras( Model model, HttpSession sesion) {
-		ClienteDto cltDTO=clientesService.encontrarCliente(sesion.getAttribute("usuario").toString());
+		ClienteDto cltDTO=(ClienteDto)sesion.getAttribute("cliente");
 
 		model.addAttribute("compras", librosService.informeVentasDto(cltDTO));
 
