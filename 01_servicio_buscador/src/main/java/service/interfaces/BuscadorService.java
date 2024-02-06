@@ -10,6 +10,13 @@ public interface BuscadorService {
 	List<Resultado> buscar(String tematica);
 	
 	public void agregarPagina(Resultado resultado);
+	
+	List<Resultado> eliminarResultados(String url);
+	
+	Resultado actualizarDescripcion(String url, String nuevaDescripcion);
+
+	Resultado actualizarDescripcionPorObjeto(Resultado resultado);
+	
 		
 	
 

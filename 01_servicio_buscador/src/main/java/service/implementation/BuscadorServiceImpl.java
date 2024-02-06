@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import model.Resultado;
 import service.interfaces.BuscadorService;
@@ -40,6 +41,53 @@ public class BuscadorServiceImpl implements BuscadorService {
 		resultados.add(resultado);
 		
 	}
+
+
+	@Override
+	public List<Resultado> eliminarResultados(String url) {
+		for (Resultado resultado : resultados) {
+			if(resultado.getUrl().equals(url)) {
+				resultados.remove(resultado);
+			}	
+		}
+		return resultados;
 	}
+
+	
+
+
+	@Override
+	public Resultado actualizarDescripcion(String url, String nuevaDescripcion) {
+		Resultado resultado=resultados.stream()//te recorre la arrays
+				.filter(r->r.getUrl()//te coge y la url del elemento
+				.equals(url))//lo compara ocn la url 
+				.findFirst()//para coger solo el primero
+				.orElse(null);//es un optional, hay que darle otra posibilidad
+		if(resultado!=null) {
+		//para asegurarnos que no es null
+			resultado.setDescription(nuevaDescripcion);
+		}
+		
+		return resultado;
+	}
+	
+	@Override
+	public Resultado actualizarDescripcionPorObjeto( Resultado resultado) {
+		Resultado resultadoNew=resultados.stream()//te recorre la arrays
+				.filter(r->r.getUrl()//te coge y la url del elemento
+				.equals(resultado.getUrl()))//lo compara ocn la url 
+				.findFirst()//para coger solo el primero
+				.orElse(null);//es un optional, hay que darle otra posibilidad
+		if(resultado!=null) {
+		//para asegurarnos que no es null
+			resultadoNew.setDescription(resultado.getDescription());
+		}
+		
+		return resultadoNew;
+	}
+
+}
+
+
 
 
