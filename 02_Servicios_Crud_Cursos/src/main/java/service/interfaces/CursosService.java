@@ -18,7 +18,7 @@ public interface CursosService {
 	
 	public void actualizacionPrecios(String denominacion, int precio);
 	
-	public List<Integer> mostrarPrecios(String denominacion );
+	public List<Curso> mostrarPrecios(String denominacion );
 	
 	
 	

@@ -2,54 +2,61 @@ package service.implementation;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import dao.CursosDao;
 import model.Curso;
 import service.interfaces.CursosService;
 
 @Service
 public class CursosServiceImpl implements CursosService{
-
+	
+	@Autowired
+	CursosDao cursosDao;
+	
 	@Override
 	public List<Curso> busquedaTodos() {
-		// TODO Auto-generated method stub
-		return null;
+		return cursosDao.findAll();
 	}
 
 	@Override
 	public Curso busquedaPorId(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return cursosDao.findById(id).orElse(null);
+	
 	}
 
 	@Override
 	public List<Curso> busquedaPorRango(int precio1, int precio2) {
-		// TODO Auto-generated method stub
-		return null;
+		return cursosDao.findByPrecioBetween(precio1, precio2);
 	}
 
 	@Override
 	public List<Curso> altaCurso(Curso curso) {
-		// TODO Auto-generated method stub
-		return null;
+		cursosDao.save(curso);
+		
+		return cursosDao.findAll();
 	}
 
 	@Override
 	public Curso borrarCurso(String denominacion) {
-		// TODO Auto-generated method stub
-		return null;
+		Curso cursoBorrado=cursosDao.findByDenominacion(denominacion);
+		if(cursoBorrado!=null) {
+			cursosDao.deleteByDenominacion(denominacion);
+			return cursoBorrado;}
+		return cursoBorrado;
+			
 	}
 
 	@Override
 	public void actualizacionPrecios(String denominacion, int precio) {
-		// TODO Auto-generated method stub
-		
+		cursosDao.subirPrecio(denominacion, precio);
 	}
 
 	@Override
-	public List<Integer> mostrarPrecios(String denominacion) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Curso> mostrarPrecios(String denominacion) {
+		return cursosDao.busquedaPorDenominacion(denominacion);
 	}
 
 }

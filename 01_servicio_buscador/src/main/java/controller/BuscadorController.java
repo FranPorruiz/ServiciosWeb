@@ -29,9 +29,9 @@ public class BuscadorController {
 	//recogemos la tematica y le devolmeos la lista de resultados
 	//a esto se le llama recurso
 	@GetMapping(value="buscar", produces="application/json")
-	public List<Resultado> buscar(@RequestParam("tematica")String tematica){
-		return buscadorService.buscar(tematica);
-	}
+		public List<Resultado> buscar(@RequestParam("tematica")String tematica){
+			return buscadorService.buscar(tematica);
+		}
 	
 	
 	//el produces para indicar que el tipo de cuerpo de la respuesta es json
