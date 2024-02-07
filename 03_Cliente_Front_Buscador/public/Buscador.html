@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+</head>
+<body>
+	<div class="container m-5 p-5">
+		<div class="row">
+			<div class="col">
+			Introduce temática
+			</div>
+		
+			<div class="col">
+				<input type="text" id="tematica">
+			</div>
+			<div class="col">
+				<input type="button" id="enviar" value="Buscar">
+			</div>	
+		</div>
+		<div class="row">
+			<div id="tbResultados">
+			</div>
+		</div>
+	
+	</div>
+	<script type="text/javascript">
+		//funcion asociada al boton con id
+		$("#enviar").click(buscarResultados);
+		
+		//declaracion de funcion
+		function buscarResultados(){
+			//llamada a la url de servicio
+			let url="http://localhost:8080/01_servicio_buscador/buscar";
+			//le pasamo la variable recogiendo la variable del input text
+			let params={"tematica":$("#tematica").val()}
+			//lanzamo las peticion get, que coge la url, la parametros 
+		
+			$.get(url, params, procesarResultados);
+			//data es la informacion que recibimos
+			function procesarResultados(data){
+				 let res="<h1>Resultados de la búsqueda</h1">
+				
+				//funcion each, recorre la informacion
+				$.each(data, function(i,e){
+					res+="<a href='"+e.url+"'>"+e.url+"</a><br>";
+					res+="<b>"+e.descricion+"</b><br><hr>";
+					
+				});
+				
+
+				//le decimos a nuestra etiqueta que cargue la html de resultados
+				$("#tbResultados").html(res);
+				
+			
+			}
+			
+		}
+	
+	</script>
+
+</body>
+</html>
