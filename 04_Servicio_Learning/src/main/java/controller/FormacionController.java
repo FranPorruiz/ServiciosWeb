@@ -5,6 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import model.Formacion;
@@ -18,5 +21,17 @@ public class FormacionController {
 	public List<Formacion> catalogo(){
 		return service.catalogo();
 	} 
+	
+	//le llamamos igual que el anteror, peor le pasamos una variable, lo que la diferencia
+	@GetMapping(value="catalogo/{max}",produces=MediaType.APPLICATION_JSON_VALUE)
+	public List<Formacion> catalogo(@PathVariable("max") int max){
+		return service.catalogoporDuracionMax(max);
+		
+	}
+	
+	@PostMapping(value="alta", consumes=MediaType.APPLICATION_JSON_VALUE)
+	public void alta(@RequestBody Formacion formacion) {
+		service.altaFormacion(formacion);
+	}
 
 }

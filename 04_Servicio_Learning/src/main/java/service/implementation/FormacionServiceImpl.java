@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
 
@@ -30,15 +31,20 @@ public class FormacionServiceImpl implements FormacionService {
 
 	@Override
 	public List<Formacion> catalogoporDuracionMax(int max) {
+		//vamos a filtrar los catalogos y a filtrarlos con programacion funcional
 		
-		return null;
+		return catalogo().stream().
+				filter(f->f.getHoras()<=max).
+				toList();
 	}
 
 	@Override
 	public void altaFormacion(Formacion formacion) {
-		// TODO Auto-generated method stub
-		
+		restClient.post().//usando el restclient llamamos al metodo de envio
+		uri(urlBase+"alta").//le pasamos la url basica y nuestro metodo
+		contentType(MediaType.APPLICATION_JSON).//le pasamos el JSon SIN el value, porque el value es una cadena de caracteres
+		body(formacion).//le pasamos el objeto
+		retrieve(); //retrieve para enviar la peticion
 	}
 	
-
 }
