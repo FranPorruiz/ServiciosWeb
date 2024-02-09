@@ -44,7 +44,7 @@
 	function cargarContinentes(){
 		//la funcion de cargarpaises lo que hara sera llamar a una funcion par ala tabla
 		//el id lista nos dice que tenemos selecionado
-		var res="<select id='lista' onchange='cargarPaises()'>";
+		var res="<select id='lista' onchange='cargarPaises()'> <option value='todos'>Todos</option>";
 		//aqui es donde se lanza la url a la funcion contienentes del controller
 		$.get(url+"continentes", function(data){
 			$.each(data, function(i,e){

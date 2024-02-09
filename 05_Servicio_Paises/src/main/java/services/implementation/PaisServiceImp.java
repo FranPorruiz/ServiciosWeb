@@ -21,7 +21,7 @@ public class PaisServiceImp implements PaisService {
 	String url="https://restcountries.com/v2/all/";
 	
 	
-	private List<Pais> todos() {
+	public List<Pais> todos() {
 		
 		return Arrays.asList(restClient.get()//usamos el metodo get de restClient
 				.uri(url)//la url arriba mas el metodo que recoge los cursos

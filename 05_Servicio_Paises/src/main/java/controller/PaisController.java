@@ -24,6 +24,11 @@ public class PaisController {
 	
 	@GetMapping(value="paises/{continente}", produces=MediaType.APPLICATION_JSON_VALUE)
 	public List<Pais> paises(@PathVariable("continente")String continente){
+		if(continente.equals("todos")) {
+			return ps.todos();
+			
+			
+		}
 		return ps.paisesPorContinente(continente);
 	}
 	

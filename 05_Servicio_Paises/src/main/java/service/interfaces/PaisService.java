@@ -12,6 +12,7 @@ public interface PaisService {
 	List<String> listaContinentes();
 	List<Pais> paisesPorContinente(String continente);
 	Pais masHabitado();
+	 List<Pais> todos();
 	
 	
 
