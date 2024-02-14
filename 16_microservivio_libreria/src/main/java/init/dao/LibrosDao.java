@@ -15,7 +15,7 @@ public interface LibrosDao extends JpaRepository<Libro, Integer> {
 	
 	//lista de tematicas 
 	//los precios de todos los cursos por tematica
-	@Query("select l.tematica from Libro l")
+	@Query("select  DISTINCT l.tematica from Libro l ")
 	List<String> listaTematicas();
 	
 }

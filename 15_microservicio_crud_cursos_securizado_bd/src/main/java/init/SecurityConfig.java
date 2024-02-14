@@ -39,21 +39,23 @@ public class SecurityConfig {
 	//este metodo es que controla los criterios de acceso, recibe un http  que nos permitira controloras
 	@Bean
 	public SecurityFilterChain filter(HttpSecurity http) throws Exception {
-		/*
 		http.csrf(c->c.disable())//desactivar una configuracion de cookis
 		.authorizeHttpRequests(//con esto indicamos que direcciones están protegidas
 				aut->aut.
-				requestMatchers(HttpMethod.GET, "/buscarPorISBN/*").authenticated().
-				requestMatchers(HttpMethod.POST,"/alta" ).hasRole("ADMINS").
+				requestMatchers(HttpMethod.GET, "/curso").authenticated().//direcciones a asecgurar y roles que seane ncesarios en cada caso
+				requestMatchers(HttpMethod.GET,"/rango/*/*" ).hasAnyRole("ADMIN").
+				requestMatchers(HttpMethod.POST,"/alta" ).hasRole("ADMIN").
+				requestMatchers(HttpMethod.DELETE,"/eliminar" ).hasAnyRole("ADMIN", "OPERATORS").
+				requestMatchers(HttpMethod.PUT,"/actualizarPrecio" ).hasAnyRole("OPERATORS").
 				anyRequest().permitAll()
 				)
-			.httpBasic(Customizer.withDefaults());//con esto indicamos como e autentiza el cliente
-			*/
+				.httpBasic(Customizer.withDefaults());//con esto indicamos como e autentiza el cliente
+
+
 			return http.build();
 		
 		
 	}
-	
 	
 
 }
