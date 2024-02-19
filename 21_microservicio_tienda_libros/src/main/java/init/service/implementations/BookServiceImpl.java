@@ -53,12 +53,15 @@ public class BookServiceImpl implements BookService {
 		
 		return Arrays.asList(restClient.get()
 			.uri(urlBase+"catalogo")
+			.header("Authorization", "Bearer "+getToken())
 			.retrieve()
 			.body(Book[].class)
+
+
 		)
 		.stream()
 		.filter(b->b.getTematica().equals(tematica))
-		.toList();
+		.toList() ;
 	}
 	//metodo para generar el token
 		private String getToken() {

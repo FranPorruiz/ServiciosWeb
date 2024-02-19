@@ -22,8 +22,7 @@ public class JwtAuthConverter implements Converter<Jwt, AbstractAuthenticationTo
 	@Override
 	public AbstractAuthenticationToken convert(Jwt jwt) {
 		Collection<GrantedAuthority> authorities =extractResourceRoles(jwt);
-    	
-		return new JwtAuthenticationToken(jwt, authorities, jwt.getClaim("preferred_username"));
+    	return new JwtAuthenticationToken(jwt, authorities, jwt.getClaim("preferred_username"));
 	}
 	//obtiene la colección con los roles incluidos en el token
     private Collection<GrantedAuthority> extractResourceRoles(Jwt jwt) {   
